@@ -1,0 +1,35 @@
+{
+  "name": "blokklist-api-node",
+  "version": "1.0.0",
+  "description": "Offical Blokklist API NPM Package",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node ./dist/index.js",
+    "main": "dist/index.js",
+    "types": "src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pocketnone/blokklist-api-node.git"
+  },
+  "keywords": [
+    "api",
+    "blokklist",
+    "typescript"
+  ],
+  "author": "NONE",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pocketnone/blokklist-api-node/issues"
+  },
+  "homepage": "https://github.com/pocketnone/blokklist-api-node#readme",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/node-fetch": "^2.6.3",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.1"
+  }
+}
