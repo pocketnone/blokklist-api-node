@@ -25,9 +25,9 @@ Then, import the `GetUserData` class and create a new instance with your configu
 ```typescript
 import { GetUserData } from 'blokklist-api-node';
 
-const urlToRequestUser = 'https://example.com/user/123';
 
-GetUserData(config, urlToRequestUser)
+
+GetUserData(config, 'link_to_vrchatUser')
   .then((data) => console.log(data))
   .catch((error) => console.error(error));
 ```
