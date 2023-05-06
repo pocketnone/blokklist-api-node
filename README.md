@@ -1,64 +1,62 @@
-# blokklist-api-node
+# README
 
-A TypeScript NPM package for interacting with the Blokklist API.
+## User Data Fetcher
 
-## Installation
+This module is designed to fetch user data from a given API using a custom configuration object. It provides an easy-to-use interface to interact with the API and retrieve user information.
 
-Install the package using npm:
+### Dependencies
 
-```bash
-npm install blokklist-api-node
-```
+- node-fetch: A dependency required for making HTTP requests to the API.
 
-## Usage
+### Functions
 
-First, import the `Configuration` class and create a new instance with your API authentication token:
+#### GetUserData(config: Configuration, urlToRequestUser: string, limitReasons: number): Promise<any>
 
-```typescript
-import { Configuration } from 'blokklist-api-node';
+Fetches user data from the API.
 
-const config = new Configuration('<Your-Auth-Token>');
-```
+- `config` (Configuration): The configuration object for the API.
+- `urlToRequestUser` (string): The VRChat URL to request the user.
+- `limitReasons` (number): Limit for the Reason field.
 
-Then, import the `GetUserData` class and create a new instance with your configuration:
+Returns a Promise that resolves with the user data.
 
-```typescript
-import { GetUserData } from 'blokklist-api-node';
+### Classes
 
+#### Configuration
 
+Represents the configuration for interacting with the API. Manages authentication token and headers.
 
-GetUserData(config, 'link_to_vrchatUser')
-  .then((data) => console.log(data))
-  .catch((error) => console.error(error));
-```
-
-## API
-
-### Configuration
-
-A class to manage the API configuration, including the authentication token and headers.
-
-#### constructor(authToken: string)
+##### Constructor(authToken: string, userAgent: string)
 
 Creates a new Configuration instance.
 
-- authToken: The authentication token for the API.
+- `authToken` (string): The authentication token for the API.
+- `userAgent` (string): The user agent to use for the API.
 
-#### getHeaders(): { [key: string]: string }
+##### getHeaders(): { [key: string]: string }
 
 Retrieves the headers required for interacting with the API.
 
 Returns an object containing the headers.
 
-### GetUserData(config: Configuration, urlToRequestUser: string): Promise<any>
+## Usage
 
-Fetches user data from the API.
+Here's an example of how to use the `GetUserData` function and the `Configuration` class:
 
-- config: The configuration object for the API.
-- urlToRequestUser: The URL to request the user.
+```javascript
+import { Configuration } from './configuration';
+import { GetUserData } from './userDataFetcher';
 
-Returns a Promise that resolves with the user data.
+const authToken = 'your_auth_token';
+const userAgent = 'your_user_agent';
+const config = new Configuration(authToken, userAgent);
 
-## License
+const urlToRequestUser = 'https://vrchat.com/home/user/usr_xxxxxx';
+const limitReasons = 5;
 
-MIT
+GetUserData(config, urlToRequestUser, limitReasons)
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+```
+
+Make sure to replace `'your_auth_token'` and `'your_user_agent'` with your actual API authentication token and desired user agent.
