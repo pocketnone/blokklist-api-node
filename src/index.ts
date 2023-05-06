@@ -6,16 +6,18 @@ import fetch from 'node-fetch';
  *
  * @param config - The configuration object for the API.
  * @param urlToRequestUser - The VRChat URL to request the user.
+ * @param limitReasons - Limit for the Reason field.
  * @returns A Promise that resolves with the user data.
  */
 async function GetUserData(
     config: Configuration,
-    urlToRequestUser: string
+    urlToRequestUser: string,
+    limitReasons: number,
 ): Promise<any> {
     const apiUrl = 'https://api.none.mba/user/request';
     const requestBody = {
         UserID: urlToRequestUser,
-        Options: { LimitReasons: 20 },
+        Options: { LimitReasons: limitReasons },
     };
 
     const response = await fetch(apiUrl, {
